@@ -1,0 +1,97 @@
+{% load humanize %}
+
+<head>
+  <title>NeoBank Dashboard</title>
+  {% include 'head.html'%}
+</head>
+
+<header>{% include 'navbar.html' %}</header>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-7">
+      <div class="text-center">
+        <img
+          src="https://gravatar.com/avatar/35ae5c17aed9f8ce302e95adbec0674c?s=400&d=robohash&r=x"
+          alt="NeoBank"
+          class="img-fluid img-avatar rounded-circle"
+          style="width: 50px; height: 50px; object-fit: cover"
+        />
+      </div>
+
+      <h2>Bienvenido, {{ client.name }}!</h2>
+      <p>
+        Este es su panel de control personalizado donde puede gestionar su
+        cuenta NeoBank NeoBank..
+      </p>
+      <hr />
+    </div>
+
+    <div class="col-md-4">
+      {% if not account %}
+
+      <h3>Agregar Nueva Cuenta</h3>
+      <form method="POST" action="add_account">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="accountType">Tipo de Cuenta</label>
+          <select
+            class="form-control"
+            id="accountType"
+            name="account_type"
+            required
+          >
+            <option value="current">Cuenta Corriente</option>
+            <option value="saving">Cuenta Ahorros</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="balance">Deposito Inicial</label>
+          <input
+            type="number"
+            class="form-control"
+            id="balance"
+            name="balance"
+            required
+            min="100"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Agregar Cuenta</button>
+      </form>
+      {% else %}
+      <div class="account-item">
+        <h5>Fecha de inicio: {{ account.created_at }}</h5>
+        <p>Numero de cuenta: {{ account.number }}</p>
+        <p>Tu Saldo es: ${{ account.balance|intcomma}}</p>
+      </div>
+
+      <button class="btn btn-dark" onclick="formHidden('transferForm')">
+        Transferir
+      </button>
+      <button
+        type="button"
+        class="btn btn-danger"
+        onclick="formHidden('withdrawForm')"
+      >
+        Retirar
+      </button>
+      <button
+        type="button"
+        class="btn btn-success"
+        onclick="formHidden('depositForm')"
+      >
+        Depositar
+      </button>
+      {% endif %}
+    </div>
+  </div>
+  <div class="col">{% include 'form_deposit.html' %}</div>
+  <div class="col">{% include 'form_withdraw.html'%}</div>
+  <div class="col">{% include 'form_transfer.html' %}</div>
+  <div class="col pt-4">{% include 'tables_transfers.html' %}</div>
+  <div class="col" id="extractReport" style="display: none">
+    {% include 'extract.html' %}
+  </div>
+</div>
+{% include 'footer.html' %}

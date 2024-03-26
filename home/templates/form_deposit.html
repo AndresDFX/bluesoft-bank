@@ -1,0 +1,25 @@
+<div id="depositForm" style="display: none">
+  <h3>Depositar Dinero</h3>
+  <form method="POST" action="">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="depositAmount">Cantidad a Depositar</label>
+      <input
+        type="number"
+        class="form-control"
+        id="depositAmount"
+        name="amount"
+        required
+        min="1"
+      />
+    </div>
+    <button type="submit" class="btn btn-success">Confirmar Depósito</button>
+    <button
+      type="button"
+      class="btn btn-dark"
+      onclick="formHidden('depositForm', true)"
+    >
+      Cancelar
+    </button>
+  </form>
+</div>

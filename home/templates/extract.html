@@ -1,0 +1,24 @@
+<div id="extractPrint" class="extracto">
+  <h1 class="text-center mb-4">Extracto Bancario</h1>
+
+  <p><strong>Cliente:</strong> {{client.name}}</p>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-hover" id="reports">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Fecha</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Cantidad</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <button type="button" class="btn btn-primary" onclick="printExtract()">
+    Imprimir
+  </button>
+</div>

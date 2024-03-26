@@ -1,0 +1,49 @@
+<div id="withdrawForm" style="display: none">
+  <h3>Retirar Dinero</h3>
+  <form method="POST" id="withdrawMoney">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="withdrawAmount">Cantidad a Retirar</label>
+      <input
+        type="number"
+        class="form-control"
+        id="amount"
+        oninput="validAmount(this)"
+        name="amount"
+        required
+        min="1"
+      />
+    </div>
+    <p class="text-monospace text-error">
+      El monto minimo a retirar es de $1 Recuerda que debes tener saldo
+      suficiente para realizar el retiro.
+    </p>
+    <div
+      class="alert alert-danger"
+      role="alert"
+      id="ErrorLen"
+      style="display: none"
+    ></div>
+    <div class="form-group">
+      <select class="form-control" name="account" required>
+        <option value="" disabled selected>Selecciona donde retirara</option>
+        <option value="city">En La Ciudad</option>
+        <option value="camp">Afueras de la ciudad</option>
+      </select>
+    </div>
+    <button
+      type="button"
+      onclick="submitForm('withdrawMoney', 'withdrawMoney')"
+      class="btn btn-success"
+    >
+      Confirmar Retiro
+    </button>
+    <button
+      type="button"
+      class="btn btn-dark"
+      onclick="formHidden('withdrawForm', true)"
+    >
+      Cancelar
+    </button>
+  </form>
+</div>

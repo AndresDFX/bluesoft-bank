@@ -1,0 +1,25 @@
+<div id="transferForm" style="display: none">
+  <h3>Transferir Dinero</h3>
+  <form method="POST" action="">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="withdrawAmount">Cantidad a Transferir</label>
+      <input
+        type="number"
+        class="form-control"
+        id="withdrawAmount"
+        name="amount"
+        required
+        min="1"
+      />
+    </div>
+    <button type="submit" class="btn btn-success">Confirmar Retiro</button>
+    <button
+      type="button"
+      class="btn btn-dark"
+      onclick="formHidden('transferForm', true)"
+    >
+      Cancelar
+    </button>
+  </form>
+</div>

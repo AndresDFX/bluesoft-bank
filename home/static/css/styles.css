@@ -1,0 +1,99 @@
+.container-fluid,
+.navbar-brand,
+.nav-link {
+    outline: none;
+    color: #fff;
+}
+
+.active {
+    opacity: 0.5;
+}
+
+
+a.navbar-brand:hover,
+a:hover,
+a.nav-link:hover {
+    outline: none;
+    color: #7c7575;
+}
+
+
+.animate__animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.animate__fadeIn {
+    animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.col-md-4 {
+    margin-bottom: 10px;
+}
+
+.animated-gif {
+    animation: fadeIn 1s;
+}
+
+.card-fixed-height .card-body {
+    height: 150px;
+}
+
+.row.g-4 {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+    .card-fixed-height {
+        margin-bottom: 20px;
+    }
+}
+
+.form-control {
+    margin-bottom: 10px;
+    outline: none;
+}
+
+.form-control:focus {
+    background-color: #fff !important;
+    color: #7c7575 !important;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(124, 117, 117, 0.25) !important;
+    border-color: #7c7575 !important;
+}
+
+#depositForm,
+#transferForm,
+#withdrawForm,
+#extractForm,
+#extractReport {
+    animation: forwards fadeIn 1s;
+}
+
+.img-avatar {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    border: 1px solid #dee2e6;
+}
+
+.fowards {
+    animation: forwards fadeIn 2s;
+}
+
+.text-error {
+    color: #7c7575;
+    line-height: 0.1;
+    opacity: 0.7;
+    font-weight: 300;
+}
